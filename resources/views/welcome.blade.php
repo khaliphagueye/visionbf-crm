@@ -476,6 +476,7 @@ Mouse Cursor
             color: #fff;
             /* adapte selon ton thème */
         }
+        
     </style>
 
 </head>
@@ -7974,9 +7975,96 @@ RESPONSIVE
             }
 
         }
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:-20%;
+
+    z-index:-3;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(37,99,235,.12), transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(244,180,0,.10), transparent 30%),
+        radial-gradient(circle at 60% 10%, rgba(16,185,129,.08), transparent 28%);
+
+    filter:blur(80px);
+
+    animation:auroraMove 25s ease-in-out infinite alternate;
+
+}
+
+@keyframes auroraMove{
+
+0%{
+
+transform:translate(-40px,-20px) scale(1);
+
+}
+
+100%{
+
+transform:translate(40px,30px) scale(1.2);
+
+}
+
+}
+.mouse-glow{
+
+    position:fixed;
+
+    width:380px;
+
+    height:380px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:radial-gradient(circle,
+        rgba(37,99,235,.15),
+        transparent 70%);
+
+    transform:translate(-50%,-50%);
+
+    z-index:-1;
+
+    transition:left .08s linear, top .08s linear;
+
+}
+.particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.25;
+
+}
     </style>
 
+<script>
+    const glow = document.createElement("div");
 
+glow.className="mouse-glow";
+
+document.body.appendChild(glow);
+
+document.addEventListener("mousemove",(e)=>{
+
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
+
+});
+</script>
 
 
 
