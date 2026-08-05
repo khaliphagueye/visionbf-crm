@@ -1,48 +1,60 @@
-FROM php:8.4-fpm
+FROM dunglas/frankenphp:php8.4
 
-# Installation des dépendances système + Node.js
+# Dépendances système
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
+    zip \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     libzip-dev \
-    zip
+    && rm -rf /var/lib/apt/lists/*
 
-# Installation de Node.js 22
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs
+# Node.js 22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs
 
 # Extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 RUN docker-php-ext-install \
     pdo_mysql \
+    bcmath \
     gd \
-    zip \
-    bcmath
+    zip
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
+WORKDIR /app
 
-COPY . .
+# Copier les fichiers Composer d'abord (optimise le cache Docker)
+COPY composer.json composer.lock ./
 
-# Dépendances PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install \
+    --no-dev \
+    --prefer-dist \
+    --optimize-autoloader \
+    --no-interaction
 
-# Dépendances Node
+# Copier package.json
+COPY package*.json ./
+
 RUN npm install
 
-# Compilation Vite
+# Copier le projet
+COPY . .
+
+# Compiler Vite
 RUN npm run build
 
-# Optimisation Laravel
+# Optimisations Laravel
 RUN php artisan config:cache
-RUN php artisan route:cache
+RUN php artisan route:cache || true
 RUN php artisan view:cache
 
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+EXPOSE 8000
+
+CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
