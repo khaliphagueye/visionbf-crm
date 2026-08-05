@@ -34,11 +34,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="role" class="block text-sm font-medium text-slate-300">Rôle</label>
-                            <select id="role" name="role" x-model="selectedRole" required 
+                            <select id="role" name="role" x-model="selectedRole" required
                                 class="mt-1 block w-full rounded-lg bg-slate-950 border-amber-500/30 text-slate-100 focus:border-amber-500 focus:ring-amber-500 text-sm">
                                 <option value="agent">Agent</option>
-                                <option value="superviseur">Superviseur</option>
-                                <option value="secretaire">Secrétaire</option>
+                                <option value="supervisor">Superviseur</option>
+                                <option value="secretary">Secrétaire</option>
                                 <option value="admin">Administrateur</option>
                             </select>
                             <x-input-error :messages="$errors->get('role')" class="mt-1 text-red-400 text-xs" />
@@ -46,13 +46,15 @@
 
                         <div>
                             <label for="team_id" class="block text-sm font-medium text-slate-300">
-                                Équipe 
-                                <span x-show="selectedRole === 'agent' || selectedRole === 'superviseur'" class="text-amber-400">*</span>
-                                <span x-show="selectedRole !== 'agent' && selectedRole !== 'superviseur'" class="text-xs text-slate-500">(Optionnel)</span>
+                                Équipe
+                                <span x-show="selectedRole === 'agent' || selectedRole === 'supervisor'"
+                                    class="text-amber-400">*</span>
+                                <span x-show="selectedRole !== 'agent' && selectedRole !== 'supervisor'"
+                                    class="text-xs text-slate-500">(Optionnel)</span>
                             </label>
 
-                            <select id="team_id" name="team_id" 
-                                :required="selectedRole === 'agent' || selectedRole === 'superviseur'"
+                            <select id="team_id" name="team_id"
+                                :required="selectedRole === 'agent' || selectedRole === 'supervisor'"
                                 class="mt-1 block w-full rounded-lg bg-slate-950 border-amber-500/30 text-slate-100 focus:border-amber-500 focus:ring-amber-500 text-sm">
                                 <option value="">Choisir une équipe...</option>
                                 @foreach($teams ?? [] as $team)
@@ -82,17 +84,20 @@
                         </div>
 
                         <div>
-                            <label for="password_confirmation" class="block text-sm font-medium text-slate-300">Confirmer mot de passe</label>
+                            <label for="password_confirmation"
+                                class="block text-sm font-medium text-slate-300">Confirmer mot de passe</label>
                             <input id="password_confirmation" type="password" name="password_confirmation" required
                                 class="mt-1 block w-full rounded-lg bg-slate-950 border-amber-500/30 text-slate-100 focus:border-amber-500 focus:ring-amber-500 text-sm">
                         </div>
                     </div>
 
                     <div class="flex justify-end gap-3 pt-4 border-t border-slate-800">
-                        <a href="{{ route('users.index') }}" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold uppercase tracking-wider rounded-lg transition">
+                        <a href="{{ route('users.index') }}"
+                            class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold uppercase tracking-wider rounded-lg transition">
                             Annuler
                         </a>
-                        <button type="submit" class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-semibold uppercase tracking-wider rounded-lg transition shadow-lg shadow-amber-500/10">
+                        <button type="submit"
+                            class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-semibold uppercase tracking-wider rounded-lg transition shadow-lg shadow-amber-500/10">
                             Créer l'utilisateur
                         </button>
                     </div>

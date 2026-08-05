@@ -465,8 +465,8 @@ Mouse Cursor
         }
 
         .logo-circle img {
-            width: 75%;
-            height: 75%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
@@ -476,7 +476,6 @@ Mouse Cursor
             color: #fff;
             /* adapte selon ton thème */
         }
-        
     </style>
 
 </head>
@@ -517,7 +516,7 @@ HEADER + HERO
                 <ul class="nav-menu">
 
                     <li>
-                        <a href="#hero" class="active">
+                        <a href="#hero" class="">
                             Accueil
                         </a>
                     </li>
@@ -534,7 +533,7 @@ HEADER + HERO
                         </a>
                     </li>
 
-                    
+
 
                 </ul>
 
@@ -4859,7 +4858,7 @@ QUI SOMMES-NOUS ?
 
                             <div class="stat-box">
 
-                                <span class="number">+150</span>
+                                <span class="number">+15000</span>
 
                                 <small>Clients</small>
 
@@ -6486,9 +6485,10 @@ CONTACT
 
             <!-- Grid -->
             @if(session('success'))
-                <div class="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-3">
-                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <div
+                    class="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{{ session('success') }}</span>
                 </div>
@@ -6647,7 +6647,7 @@ CONTACT
 
                         </div>
 
-                        <button class="btn-primary">
+                        <button class="btn-nav">
 
                             Envoyer le message
 
@@ -7975,96 +7975,99 @@ RESPONSIVE
             }
 
         }
-body::before{
 
-    content:"";
+        body::before {
 
-    position:fixed;
+            content: "";
 
-    inset:-20%;
+            position: fixed;
 
-    z-index:-3;
+            inset: -20%;
 
-    background:
-        radial-gradient(circle at 20% 30%, rgba(37,99,235,.12), transparent 35%),
-        radial-gradient(circle at 80% 70%, rgba(244,180,0,.10), transparent 30%),
-        radial-gradient(circle at 60% 10%, rgba(16,185,129,.08), transparent 28%);
+            z-index: -3;
 
-    filter:blur(80px);
+            background:
+                radial-gradient(circle at 20% 30%, rgba(37, 99, 235, .12), transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(244, 180, 0, .10), transparent 30%),
+                radial-gradient(circle at 60% 10%, rgba(16, 185, 129, .08), transparent 28%);
 
-    animation:auroraMove 25s ease-in-out infinite alternate;
+            filter: blur(80px);
 
-}
+            animation: auroraMove 25s ease-in-out infinite alternate;
 
-@keyframes auroraMove{
+        }
 
-0%{
+        @keyframes auroraMove {
 
-transform:translate(-40px,-20px) scale(1);
+            0% {
 
-}
+                transform: translate(-40px, -20px) scale(1);
 
-100%{
+            }
 
-transform:translate(40px,30px) scale(1.2);
+            100% {
 
-}
+                transform: translate(40px, 30px) scale(1.2);
 
-}
-.mouse-glow{
+            }
 
-    position:fixed;
+        }
 
-    width:380px;
+        .mouse-glow {
 
-    height:380px;
+            position: fixed;
 
-    border-radius:50%;
+            width: 380px;
 
-    pointer-events:none;
+            height: 380px;
 
-    background:radial-gradient(circle,
-        rgba(37,99,235,.15),
-        transparent 70%);
+            border-radius: 50%;
 
-    transform:translate(-50%,-50%);
+            pointer-events: none;
 
-    z-index:-1;
+            background: radial-gradient(circle,
+                    rgba(37, 99, 235, .15),
+                    transparent 70%);
 
-    transition:left .08s linear, top .08s linear;
+            transform: translate(-50%, -50%);
 
-}
-.particle{
+            z-index: -1;
 
-    position:absolute;
+            transition: left .08s linear, top .08s linear;
 
-    width:4px;
+        }
 
-    height:4px;
+        .particle {
 
-    border-radius:50%;
+            position: absolute;
 
-    background:white;
+            width: 4px;
 
-    opacity:.25;
+            height: 4px;
 
-}
+            border-radius: 50%;
+
+            background: white;
+
+            opacity: .25;
+
+        }
     </style>
 
-<script>
-    const glow = document.createElement("div");
+    <script>
+        const glow = document.createElement("div");
 
-glow.className="mouse-glow";
+        glow.className = "mouse-glow";
 
-document.body.appendChild(glow);
+        document.body.appendChild(glow);
 
-document.addEventListener("mousemove",(e)=>{
+        document.addEventListener("mousemove", (e) => {
 
-    glow.style.left=e.clientX+"px";
-    glow.style.top=e.clientY+"px";
+            glow.style.left = e.clientX + "px";
+            glow.style.top = e.clientY + "px";
 
-});
-</script>
+        });
+    </script>
 
 
 
@@ -8080,7 +8083,63 @@ document.addEventListener("mousemove",(e)=>{
         <div class="max-w-7xl mx-auto px-6 relative z-20">
 
             <!-- Newsletter -->
+            @if(session('newsletter_success'))
 
+                <div class="newsletter-success">
+                    {{ session('newsletter_success') }}
+                </div>
+
+            @endif
+                        @if($errors->newsletter->has('email'))
+
+                            <div class="newsletter-error">
+                                {{ $errors->newsletter->first('email') }}
+                            </div>
+
+                        @endif
+            <style>
+                .newsletter-success {
+
+                    margin-bottom: 20px;
+
+                    padding: 18px 22px;
+
+                    border-radius: 16px;
+
+                    background: rgba(16, 185, 129, .12);
+
+                    border: 1px solid rgba(16, 185, 129, .30);
+
+                    color: #10b981;
+
+                    display: flex;
+
+                    align-items: center;
+
+                    gap: 12px;
+
+                    font-weight: 600;
+
+                }
+
+                .newsletter-error {
+
+                    margin-bottom: 20px;
+
+                    padding: 18px 22px;
+
+                    border-radius: 16px;
+
+                    background: rgba(239, 68, 68, .12);
+
+                    border: 1px solid rgba(239, 68, 68, .30);
+
+                    color: #ef4444;
+
+                    font-weight: 600;
+
+                }
+            </style>
             <div class="glass rounded-[40px] p-10 lg:p-14 mb-20">
 
                 <div class="grid lg:grid-cols-2 gap-10 items-center">
@@ -8114,11 +8173,16 @@ document.addEventListener("mousemove",(e)=>{
 
                     </div>
 
-                    <form class="newsletter-form">
 
-                        <input type="email" placeholder="Votre adresse email">
 
-                        <button>
+                    <form class="newsletter-form" action="{{ route('newsletter.store') }}" method="POST">
+
+                        @csrf
+
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Votre adresse email"
+                            required>
+
+                        <button type="submit">
 
                             <i class="fa-solid fa-paper-plane mr-2"></i>
 
@@ -8131,7 +8195,49 @@ document.addEventListener("mousemove",(e)=>{
                 </div>
 
             </div>
+            <style>
+                .newsletter-success {
 
+                    margin-bottom: 20px;
+
+                    padding: 18px 22px;
+
+                    border-radius: 16px;
+
+                    background: rgba(16, 185, 129, .12);
+
+                    border: 1px solid rgba(16, 185, 129, .30);
+
+                    color: #10b981;
+
+                    display: flex;
+
+                    align-items: center;
+
+                    gap: 12px;
+
+                    font-weight: 600;
+
+                }
+
+                .newsletter-error {
+
+                    margin-bottom: 20px;
+
+                    padding: 18px 22px;
+
+                    border-radius: 16px;
+
+                    background: rgba(239, 68, 68, .12);
+
+                    border: 1px solid rgba(239, 68, 68, .30);
+
+                    color: #ef4444;
+
+                    font-weight: 600;
+
+                }
+            </style>
             <!-- Colonnes -->
 
             <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-16">
@@ -8287,9 +8393,9 @@ document.addEventListener("mousemove",(e)=>{
 
                     <div class="flex gap-8">
 
-                        <a href="#">Mentions légales</a>
+                        <a href="{{ route('mentions.legales') }}">Mentions légales</a>
 
-                        <a href="#">Confidentialité</a>
+                        <a href="{{ route('privacy') }}">Confidentialité</a>
 
                         <a href="#">Cookies</a>
 

@@ -1,0 +1,158 @@
+/* ===========================
+   FULLCALENDAR - NERO & GOLD
+=========================== */
+
+:root{
+    --nero:#0b0b0b;
+    --nero-2:#151515;
+    --gold:#d4af37;
+    --gold-light:#f6d365;
+}
+
+/* Fond */
+
+.fc{
+    color:white;
+    font-family:inherit;
+}
+
+/* Toolbar */
+
+.fc .fc-toolbar-title{
+    color:var(--gold);
+    font-size:22px;
+    font-weight:700;
+}
+
+.fc .fc-button{
+
+    background:#1b1b1b !important;
+
+    border:none !important;
+
+    color:#d4af37 !important;
+
+    box-shadow:none !important;
+
+    border-radius:10px !important;
+
+    transition:.25s;
+
+}
+
+.fc .fc-button:hover{
+
+    background:#d4af37 !important;
+
+    color:#111 !important;
+
+}
+
+.fc .fc-button-active{
+
+    background:#d4af37 !important;
+
+    color:#111 !important;
+
+}
+
+/* Tableau */
+
+.fc-theme-standard td,
+.fc-theme-standard th{
+
+    border-color:#2b2b2b;
+
+}
+
+.fc-scrollgrid{
+
+    border-color:#2b2b2b !important;
+
+}
+
+/* Nom des jours */
+
+.fc-col-header-cell{
+
+    background:#151515;
+
+}
+
+.fc-col-header-cell-cushion{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    padding:12px;
+
+}
+
+/* Cases */
+
+.fc-daygrid-day{
+
+    background:#111;
+
+}
+
+.fc-day-today{
+
+    background:#2a2207 !important;
+
+}
+
+/* Numéro des jours */
+
+.fc-daygrid-day-number{
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+/* Evènements */
+
+.fc-event{
+
+    background:#d4af37 !important;
+
+    color:#111 !important;
+
+    border:none !important;
+
+    font-weight:600;
+
+}
+
+/* Hover */
+
+.fc-event:hover{
+
+    filter:brightness(110%);
+
+}
+
+/* Vue liste */
+
+.fc-list{
+
+    background:#111;
+
+}
+
+.fc-list-day{
+
+    background:#151515 !important;
+
+    color:#d4af37;
+
+}
+
+.fc-list-event:hover td{
+
+    background:#2a2207 !important;
+
+}

@@ -69,46 +69,40 @@
 
 <body class="bg-nero-950 text-nero-200 antialiased selection:bg-gold-500 selection:text-nero-950 font-sans flex flex-col min-h-screen">
 
-    <header class="sticky top-0 z-50 bg-nero-950/90 backdrop-blur-md border-b border-nero-900 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-22 py-4">
+<header class="border-b border-yellow-700 bg-[#111111]">
 
-                <a href="{{ route('welcome') }}" class="flex items-center space-x-4">
-                    <div class="aspect-square h-14 rounded-full bg-nero-900 border-2 border-gold-500 flex items-center justify-center overflow-hidden shadow-lg shadow-gold-500/10 shrink-0">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo VISIONBF" class="h-full w-full object-cover">
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-bold tracking-tight font-title text-gold-gradient">VISIONBF</span>
-                        <span class="text-[11px] tracking-widest text-nero-400 uppercase font-semibold">Excellence Center</span>
-                    </div>
-                </a>
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
 
-                <nav class="hidden md:flex items-center space-x-10 text-sm font-semibold text-nero-300">
-                    <a href="{{ route('welcome') }}#accueil" class="hover:text-gold-400 transition-colors">Accueil</a>
-                    <a href="{{ route('welcome') }}#expertise" class="hover:text-gold-400 transition-colors">Expertise</a>
-                    <a href="{{ route('welcome') }}#methodologie" class="hover:text-gold-400 transition-colors">Méthodologie</a>
-                    <a href="{{ route('welcome') }}#secteurs" class="hover:text-gold-400 transition-colors">Secteurs</a>
-                    <a href="{{ route('welcome') }}#contact" class="hover:text-gold-400 transition-colors">Contact</a>
-                </nav>
+            <a href="{{ route('welcome') }}"
+               class="flex items-center gap-3">
 
-                <button id="menu-btn" type="button" class="p-2.5 rounded-xl text-gold-400 hover:text-gold-300 bg-nero-900/80 border border-nero-800 md:hidden focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
+                <img src="{{ asset('images/logo.png') }}"
+                     class="h-11">
 
-            </div>
+                <div>
+
+                    <h1 class="font-bold text-xl gold-gradient">
+                        Vision BF CRM
+                    </h1>
+
+                    <p class="text-xs text-gray-400">
+                        Protection des données personnelles
+                    </p>
+
+                </div>
+
+            </a>
+
+            <a href="{{ route('welcome') }}"
+               class="px-5 py-2 rounded-lg border border-yellow-600 text-yellow-400 hover:bg-yellow-500 hover:text-black transition">
+
+                Retour
+
+            </a>
+
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-nero-950/95 border-b border-nero-900 px-4 pt-2 pb-6 space-y-3">
-            <a href="{{ route('welcome') }}#accueil" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-nero-200 hover:text-gold-400 hover:bg-nero-900/50 transition-all">Accueil</a>
-            <a href="{{ route('welcome') }}#expertise" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-nero-200 hover:text-gold-400 hover:bg-nero-900/50 transition-all">Expertise</a>
-            <a href="{{ route('welcome') }}#methodologie" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-nero-200 hover:text-gold-400 hover:bg-nero-900/50 transition-all">Méthodologie</a>
-            <a href="{{ route('welcome') }}#secteurs" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-nero-200 hover:text-gold-400 hover:bg-nero-900/50 transition-all">Secteurs</a>
-            <a href="{{ route('welcome') }}#contact" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-nero-200 hover:text-gold-400 hover:bg-nero-900/50 transition-all">Contact</a>
-        </div>
     </header>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btn = document.getElementById('menu-btn');

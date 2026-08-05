@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
@@ -22,6 +25,10 @@ Route::get('/', function () {
 Route::get('/mentions-legales', function () {
     return view('mentions-legales');
 })->name('mentions.legales');
+
+Route::post('/newsletter', [NewsletterController::class, 'store'])
+    ->name('newsletter.store');
+Route::view('/confidentialite', 'confidentialite')->name('privacy');
 
 
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
@@ -56,7 +63,23 @@ Route::middleware(['auth', 'verified', 'active'])->group(function () {
     Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
     Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
     Route::post('/tickets/{ticket}/reply', [TicketController::class, 'reply'])->name('tickets.reply');
-    
+    Route::get('/newsletters', [NewsletterController::class, 'index'])->name('newsletters.index');
+
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+    Route::get('/calendar/events', [CalendarController::class, 'events'])->name('calendar.events');
+
+
+    Route::post('/calendar/events', [CalendarController::class, 'store'])->name('calendar.store');
+    Route::get(
+        '/newsletters',
+        [AdminNewsletterController::class, 'index']
+    )->name('newsletters.index');
+
+    Route::delete(
+        '/newsletters/{newsletter}',
+        [AdminNewsletterController::class, 'destroy']
+    )->name('newsletters.destroy');
+
     // Route Admin pour changer le statut
     Route::patch('/tickets/{ticket}/status', [TicketController::class, 'updateStatus'])->name('tickets.updateStatus');
 });

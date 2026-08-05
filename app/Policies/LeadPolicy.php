@@ -45,7 +45,7 @@ class LeadPolicy
     public function update(User $user, Lead $lead): bool
     {
         // 1. Les Admins et Secrétaires peuvent tout modifier
-        if (in_array($user->role, ['admin', 'secretaire'])) {
+        if (in_array($user->role, ['admin', 'secretary'])) {
             return true;
         }
 

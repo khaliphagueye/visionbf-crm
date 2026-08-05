@@ -440,25 +440,19 @@ class LeadController extends Controller
 
      */
 
-    public function export()
-    {
+public function export(Request $request)
+{
+    $userRole = strtolower(auth()->user()->role ?? '');
 
-        $userRole = strtolower(auth()->user()->role ?? '');
-
-
-        // Vérification du rôle
-
-        if (!in_array($userRole, ['admin', 'secretaire'])) {
-
-            abort(403, 'Accès non autorisé : Seuls les administrateurs et secrétaires peuvent exporter.');
-
-        }
-
-
-        return Excel::download(new LeadsExport, 'leads_' . date('Y-m-d') . '.xlsx');
-
+    if (! in_array($userRole, ['admin', 'secretaire'])) {
+        abort(403, 'Accès non autorisé.');
     }
 
+    return Excel::download(
+        new LeadsExport($request),
+        'leads_' . now()->format('Y-m-d') . '.xlsx'
+    );
+}
 
     /**
 
