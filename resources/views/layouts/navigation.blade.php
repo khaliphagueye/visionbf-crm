@@ -5,7 +5,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}"
                         class="block p-1 bg-slate-900 rounded-full border-2 border-amber-500 shadow-md hover:border-amber-400 hover:shadow-amber-500/20 transition">
-                        <img src="{{ asset('images/logo1.png') }}" alt="VISIONBF Logo"
+                        <img src="{{ asset('images/logo2.png') }}" alt="VISIONBF Logo"
                             class="block h-10 w-10 rounded-full object-cover" />
                     </a>
                 </div>
