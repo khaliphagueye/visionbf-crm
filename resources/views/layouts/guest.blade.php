@@ -17,7 +17,7 @@
             <div>
                 <a href="/">
                     <div class="p-2 bg-slate-900 rounded-full border-2 border-amber-500/80 shadow-lg shadow-amber-500/10 hover:border-amber-400 transition">
-                        <img src="{{ asset('images/logo.png') }}" alt="VISIONBF" class="h-20 w-20 rounded-full object-cover" />
+                        <img src="{{ asset('images/logo2.png') }}" alt="VISIONBF" class="h-20 w-20 rounded-full object-cover" />
                     </div>
                 </a>
             </div>
